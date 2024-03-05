@@ -1,9 +1,8 @@
 CFLAGS = -O3
 SRC_PREFIX := src
 BUILD_PREFIX := build
-MODULES   := lib customlibs
-SRC_DIR   := $(SRC_PREFIX) $(addprefix $(SRC_PREFIX)/,$(MODULES))
-BUILD_DIR := $(BUILD_PREFIX) $(addprefix $(BUILD_PREFIX)/,$(MODULES))
+SRC_DIR   := $(shell find $(SRC_PREFIX) -type d)
+BUILD_DIR := $(patsubst src%,$(BUILD_PREFIX)%,$(SRC_DIR))
 SRC       := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.c))
 OBJ       := $(patsubst src/%.c,$(BUILD_PREFIX)/%.o,$(SRC))
 INCLUDES  := $(addprefix -I,$(SRC_DIR))
