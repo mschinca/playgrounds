@@ -1,0 +1,25 @@
+CFLAGS = -O3
+LIBPATH = lib
+BUILDPATH = build
+BUILDLIBPATH = $(BUILDPATH)/$(LIBPATH)
+
+all: say_hello
+
+say_hello: prepare_build main.o functions.o hello.o
+	cc main.o $(BUILDLIBPATH)/hello.o $(BUILDLIBPATH)/functions.o -o $(BUILDPATH)/say_hello
+
+main.o: functions.o hello.o
+	cc -c main.c -o $(BUILDPATH)/main.o
+
+functions.o:
+	cc -c $(LIBPATH)/functions.c -o $(BUILDLIBPATH)/functions.o
+
+hello.o:
+	cc -c $(LIBPATH)/hello.c -o $(BUILDLIBPATH)/hello.o
+
+prepare_build:
+	mkdir -p $(BUILDLIBPATH)
+
+clean:
+	@echo cleaning up build
+	@rm -rf $(BUILDPATH)

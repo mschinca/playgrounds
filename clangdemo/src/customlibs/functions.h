@@ -1,0 +1,1 @@
+const char* get_custom_message();
