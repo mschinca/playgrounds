@@ -1,4 +1,5 @@
-CFLAGS = -O3
+# CFLAGS = -march=skylake -O2 -pipe
+CFLAGS = -g # debug flags
 SRC_PREFIX := src
 BUILD_PREFIX := build
 SRC_DIR   := $(shell find $(SRC_PREFIX) -type d)

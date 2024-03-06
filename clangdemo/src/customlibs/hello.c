@@ -2,6 +2,6 @@
 #include "functions.h"
 #include "hello.h"
 
-void say_hello_again() {
-    printf("%s\n", get_custom_message());
+void say_hello_again(int numTimes) {
+    printf("%d %s\n", numTimes, get_custom_message());
 }

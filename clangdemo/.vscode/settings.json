@@ -2,5 +2,12 @@
     "files.associations": {
         "functions.h": "c",
         "hello.h": "c"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/me/src/demos/clangdemo/build",
+            "binaryPath": "/Users/me/src/demos/clangdemo/build/say_hello.exe",
+            "binaryArgs": []
+        }
+    ]
 }

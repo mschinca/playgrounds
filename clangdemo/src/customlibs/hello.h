@@ -1,1 +1,1 @@
-void say_hello_again();
+void say_hello_again(int numTimes);
