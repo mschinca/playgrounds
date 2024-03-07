@@ -1,0 +1,17 @@
+compiling and linking against a static library:
+
+cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes lz4file.c fileCompress.c /usr/local/Cellar/lz4/1.9.4/lib/liblz4.a -o fileCompress
+
+
+OR
+
+in steps:
+
+compiling a library (no linking): see -c option
+cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes -c lz4file.c /usr/local/Cellar/lz4/1.9.4/lib/liblz4.a -o lz4file.o
+
+compiling main file:
+cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes -c fileCompress.c /usr/local/Cellar/lz4/1.9.4/lib/liblz4.a -o fileCompress.o
+
+linking
+cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes fileCompress.o lz4file.o /usr/local/Cellar/lz4/1.9.4/lib/liblz4.a -o fileCompress
