@@ -15,3 +15,13 @@ cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshad
 
 linking
 cc -I/usr/local/Cellar/lz4/1.9.4/lib -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes fileCompress.o lz4file.o /usr/local/Cellar/lz4/1.9.4/lib/liblz4.a -o fileCompress
+
+---
+compiling and linking against a dynamic library
+
+
+cc -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes lz4file.c fileCompress.c /usr/local/lib/liblz4.dylib -o fileCompress
+
+same as:
+
+cc -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes lz4file.c fileCompress.c -llz4 -o fileCompress
