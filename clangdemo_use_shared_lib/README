@@ -25,3 +25,15 @@ cc -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototype
 same as:
 
 cc -O3 -std=gnu99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes lz4file.c fileCompress.c -llz4 -o fileCompress
+
+
+--- compile a shared library
+cc -dynamiclib -fPIC -o libutils.dylib libutils.c
+-- note: -o option will remember subfolders, e.g. -o build/lib/libutils.dylib. Not recommended
+
+--- and use it
+gcc -I/Users/me/src/demos/clangdemo_create_shared_lib/src/lib/  -L/Users/me/src/demos/clangdemo_create_shared_lib/src/lib/ -lutils  main.c -o main
+
+on macos:
+
+DYLD_LIBRARY_PATH=/Users/me/src/demos/clangdemo_create_shared_lib/src/build/lib ./clang_demo_use_my_shared_lib/src/main
